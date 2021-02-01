@@ -1,4 +1,3 @@
-
 public class Cipher {
   private String plainAlphabet;
   private String cipherAlphabet;
@@ -18,20 +17,16 @@ public class Cipher {
   }
 
   public Message encrypt(Message userMessage) {
-    String cipherLetter = "";
     if(userMessage.messageEncrypted() == true) {
-      System.out.println("ERROR: MESSAGE IS ALREADY ENCRYPTED");
+      System.out.println("ERROR: MESSAGE ALREADY ENCRYPTED");
     } else {
-      String plainText = userMessage.getUserMessage();
-      String cipherText = "";
-      for(int i = 0; i < plainText.length(); i++) {
-        char currentChar = plainText.charAt(i);
-        int currentIndexOf = plainAlphabet.indexOf(currentChar);
-        //System.out.println(currentIndexOf);
-        System.out.println(+cipherAlphabet.charAt(currentIndexOf));
-
+      String regularMessage = userMessage.getUserMessage();
+      String cipherMessage = "";
+      for(int i = 0; i < regularMessage.length(); i++) { 
+        char currentLetter = regularMessage.charAt(i);
+        int currentIndexOf = plainAlphabet.indexOf(currentLetter);
+        System.out.print(cipherAlphabet.charAt(currentIndexOf));
       }
-
     }
     return userMessage;
   }
