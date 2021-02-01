@@ -11,28 +11,29 @@ public class Cipher {
   public String createCipherAlphabet(int theShift) {
     plainAlphabet = "abcdefghijklmnopqrstuvwxyz";
     String substitutionLetters = plainAlphabet.substring(0, theShift);
-    String remainingAlphabet = plainAlphabet.substring(theShift, plainAlphabet.length());
+    String remainingAlphabet = plainAlphabet.substring(theShift, plainAlphabet.length());   
     cipherAlphabet = remainingAlphabet + substitutionLetters;
     return cipherAlphabet;
   }
 
-  public Message encrypt(Message userMessage) {
-    if(userMessage.messageEncrypted() == true) {
-      System.out.println("ERROR: MESSAGE ALREADY ENCRYPTED");
-    } else {
-      String regularMessage = userMessage.getUserMessage();
-      String cipherMessage = "";
-      for(int i = 0; i < regularMessage.length(); i++) { 
-        char currentLetter = regularMessage.charAt(i);
-        int currentIndexOf = plainAlphabet.indexOf(currentLetter);
-        System.out.print(cipherAlphabet.charAt(currentIndexOf));
-      }
+  public void encrypt(Message userMessage) {
+    String regularMessage = userMessage.getUserMessage();
+    for(int i = 0; i < regularMessage.length(); i++) { 
+      char currentLetter = regularMessage.charAt(i);
+      int currentIndexOf = plainAlphabet.indexOf(currentLetter);
+      System.out.print(cipherAlphabet.charAt(currentIndexOf));
     }
-    return userMessage;
+    
   }
 
-  public Message decrpyt(Message userMessage) {
-    return userMessage;
+  public void decrypt(Message userMessage) {
+    String encryptedMessage = userMessage.getUserMessage();
+    for(int i = 0; i < encryptedMessage.length(); i++) {
+      char currentLetter = encryptedMessage.charAt(i);
+      int currentIndexOf = cipherAlphabet.indexOf(currentLetter);
+      System.out.print(plainAlphabet.charAt(currentIndexOf));
+    }
+    
   }
 
 }
