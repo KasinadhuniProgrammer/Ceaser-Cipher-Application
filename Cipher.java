@@ -18,12 +18,20 @@ public class Cipher {
   }
 
   public Message encrypt(Message userMessage) {
+    String cipherLetter = "";
     if(userMessage.messageEncrypted() == true) {
       System.out.println("ERROR: MESSAGE IS ALREADY ENCRYPTED");
     } else {
       String plainText = userMessage.getUserMessage();
       String cipherText = "";
-      
+      for(int i = 0; i < plainText.length(); i++) {
+        char currentChar = plainText.charAt(i);
+        int currentIndexOf = plainAlphabet.indexOf(currentChar);
+        //System.out.println(currentIndexOf);
+        System.out.println(+cipherAlphabet.charAt(currentIndexOf));
+
+      }
+
     }
     return userMessage;
   }
