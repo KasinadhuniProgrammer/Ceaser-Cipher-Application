@@ -1,10 +1,10 @@
 import java.util.Scanner;
 
-public class Message {
+public class Message { 
   private String userMessage;
   private String userQuestion;
   private boolean ifEncrypted;
-  private Scanner theScanner;
+  private Scanner theScanner = new Scanner(System.in);
 
 
   public Message() {
@@ -25,7 +25,7 @@ public class Message {
   }
 
   public boolean messageEncrypted() {
-    System.out.println("Enter CRYPT if your is Encrypted, else enter DECRYPT");
+    System.out.println("Enter CRYPT if your message is Encrypted, else enter DECRYPT");
     userQuestion = theScanner.nextLine();
     if(userQuestion == "CRYPT") {
       ifEncrypted = true;
@@ -33,6 +33,12 @@ public class Message {
       ifEncrypted = false;
     }
     return ifEncrypted;
+  }
+
+  public String convertString(String a) {
+    userMessage = a; 
+    return a; 
+
   }
 
 
